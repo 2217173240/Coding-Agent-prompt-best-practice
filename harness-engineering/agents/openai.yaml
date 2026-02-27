@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness 协作执行"
+  short_description: "将代理执行变成可观测、可协作、可决策的工程化流程框架。"
+  default_prompt: "请按 harness-engineering 执行：先确认边界，再给计划、自主预算、求助阈值与验证证据。"
