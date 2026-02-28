@@ -7,6 +7,7 @@
 - **Codex CLI** 自动闭环开发 Prompt 体系
 - 基于 CSV 驱动的长时间自动化任务管理
 - 人在回路 (Human-in-the-Loop) 的代码审查流程
+- **跨语言重构可复用知识库**（Harness Engineering + CSV-Driven-Loop）
 - 实战总结的使用心法与避坑指南
 
 核心理念：通过结构化 Prompt、外部状态管理（CSV）和分工协作，规避 LLM 的上下文限制与幻觉问题，实现高质量的自动化开发。
@@ -26,6 +27,10 @@
 #### 2. Codex CLI 自动闭环开发
 - **驱动 Prompt**：[`codex-auto-prompt/prompt/prompt.md`](codex-auto-prompt/prompt/prompt.md)
 - **配套说明文档**：[`codex-auto-prompt/prompt/doc.md`](codex-auto-prompt/prompt/doc.md)
+
+### 📖 知识库
+- **跨语言重构可复用知识库**：[`documents/cross_language_refactor_reusable_kb.md`](documents/cross_language_refactor_reusable_kb.md)
+  - 涵盖 CSV-Driven-Loop 协议、Harness Engineering 交互协议、等价验证体系、CI 门禁、人审+AI 协作范式、反常识心法等
 
 ### 💡 实战经验总结
 - **Claude Code 使用心法（三条铁律）**：[`documents/cc的最佳用法.md`](documents/cc的最佳用法.md)
