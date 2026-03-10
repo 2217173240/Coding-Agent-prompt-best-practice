@@ -30,14 +30,21 @@
 
 - `$harness`
 
-## 最小输出模板
+## 最小可用控制模板 v2
 
-### Control Contract
+### Control Contract v2
 
-- Goal:
+- Primary Setpoint:
 - Acceptance:
+- Guardrail Metrics:
+- Sampling Plan:
+- Delay Budget:
+- Recovery Target:
+- Rollback Trigger:
 - Constraints:
 - Boundary:
+- Coupling Notes:
+- Approximation Validity:
 - Risks:
 
 ### State Estimate
