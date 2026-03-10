@@ -255,10 +255,18 @@
 
 ### Control Contract
 
-- Goal:
+- Primary Setpoint:
 - Acceptance:
+- Guardrail Metrics:
+- Sampling Plan:
+- Known Delays / Delay Budget:
+- Recovery Target:
+- Rollback Trigger:
 - Constraints:
 - Boundary:
+- Coupling Notes:
+- Approximation Validity:
+- Actuator Budget:
 - Risks:
 
 ### State Estimate
@@ -291,6 +299,18 @@
 - L0:
 - L1:
 - L2:
+
+### Recovery Evidence
+
+- Trigger:
+- Recovery time:
+- Rollback / restart:
+
+### Observability Evidence
+
+- Metrics / traces:
+- Profiling baseline:
+- Before vs after:
 
 ### Residual Risks
 

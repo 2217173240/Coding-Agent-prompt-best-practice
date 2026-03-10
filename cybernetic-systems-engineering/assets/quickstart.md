@@ -38,13 +38,14 @@
 - Acceptance:
 - Guardrail Metrics:
 - Sampling Plan:
-- Delay Budget:
+- Known Delays / Delay Budget:
 - Recovery Target:
 - Rollback Trigger:
 - Constraints:
 - Boundary:
 - Coupling Notes:
 - Approximation Validity:
+- Actuator Budget:
 - Risks:
 
 ### State Estimate
