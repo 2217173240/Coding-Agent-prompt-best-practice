@@ -1,0 +1,5 @@
+interface:
+  display_name: "Cybernetic Systems Engineering"
+  short_description: "用系统工程+控制论+GDA做软件工程闭环控制、审计与门禁设计"
+policy:
+  allow_implicit_invocation: true

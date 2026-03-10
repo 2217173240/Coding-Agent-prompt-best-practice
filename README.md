@@ -1,134 +1,125 @@
 # Coding Agent Prompt Best Practice
 
-## 简介
+## 仓库定位
 
-本仓库收录了 AI 编码 Agent 的 Prompt 最佳实践，包括：
-- **Claude Code** 与 **Gemini CLI** 的协同工作流模板
-- **Codex CLI** 自动闭环开发 Prompt 体系
-- 基于 CSV 驱动的长时间自动化任务管理
-- 人在回路 (Human-in-the-Loop) 的代码审查流程
-- **跨语言重构可复用知识库**（Harness Engineering + CSV-Driven-Loop）
-- 实战总结的使用心法与避坑指南
+这个仓库不是单一 Prompt 集合，而是一个面向 AI 编码 Agent 的资料库，当前内容分成四类：
 
-核心理念：通过结构化 Prompt、外部状态管理（CSV）和分工协作，规避 LLM 的上下文限制与幻觉问题，实现高质量的自动化开发。
+- 可直接复制使用的执行型 / 顾问型 Prompt
+- 面向 Codex CLI 的 CSV 自动闭环开发 Prompt
+- 可本地使用的 Codex skill 目录
+- 跨语言重构、门禁设计、人机协作的可复用知识库
 
-## 仓库内容
+仓库当前没有业务代码或可执行服务，主体是 Markdown 文档与 skill 元数据。
 
-### 📋 Prompt 模板（可直接复制使用）
+## 目录总览
 
-#### 1. Claude Code + Gemini CLI 协同工作流
-- **Claude Code 执行型 Agent**：
-  - 中文：[`documents/claude-cn.md`](documents/claude-cn.md)
-  - 英文：[`documents/claude-en.md`](documents/claude-en.md)
-- **Gemini CLI 审查/顾问型**：
-  - 中文：[`documents/gemini-cn.md`](documents/gemini-cn.md)
-  - 英文：[`documents/gemini-en.md`](documents/gemini-en.md)
+```text
+.
+├── LICENSE
+├── README.md
+├── documents/
+│   ├── claude-cn.md
+│   ├── claude-en.md
+│   ├── gemini-cn.md
+│   ├── gemini-en.md
+│   ├── cc的最佳用法.md
+│   └── cross_language_refactor_reusable_kb.md
+├── codex-auto-prompt/
+│   └── prompt/
+│       ├── doc.md
+│       └── prompt.md
+├── harness-engineering/
+│   ├── SKILL.md
+│   ├── agents/openai.yaml
+│   └── references/harness-engineering-digest.md
+└── cybernetic-systems-engineering/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── assets/quickstart.md
+    └── references/
+        ├── README.md
+        └── gda-framework.md
+```
 
-#### 2. Codex CLI 自动闭环开发
-- **驱动 Prompt**：[`codex-auto-prompt/prompt/prompt.md`](codex-auto-prompt/prompt/prompt.md)
-- **配套说明文档**：[`codex-auto-prompt/prompt/doc.md`](codex-auto-prompt/prompt/doc.md)
+## 文件导航
 
-### 📖 知识库
-- **跨语言重构可复用知识库**：[`documents/cross_language_refactor_reusable_kb.md`](documents/cross_language_refactor_reusable_kb.md)
-  - 涵盖 CSV-Driven-Loop 协议、Harness Engineering 交互协议、等价验证体系、CI 门禁、人审+AI 协作范式、反常识心法等
+### 根目录
 
-### 💡 实战经验总结
-- **Claude Code 使用心法（三条铁律）**：[`documents/cc的最佳用法.md`](documents/cc的最佳用法.md)
+| 文件 | 实际内容 |
+| --- | --- |
+| `LICENSE` | MIT License。 |
+| `README.md` | 当前导航文档，按目录与文件职责介绍仓库。 |
 
-## 环境与软件要求
+### `documents/`
 
-### 环境
-*   macOS & Linux 终端 (包括 WSL)
+| 文件 | 实际内容 |
+| --- | --- |
+| `documents/claude-cn.md` | Claude Code 中文执行协议 V2.0，包含身份、最高准则、工具、SOP、开发规范、Git 规范、思维模型。 |
+| `documents/claude-en.md` | `claude-cn.md` 的英文版。 |
+| `documents/gemini-cn.md` | Gemini CLI 中文顾问型 Prompt，强调深度审查、规则保真、系统性反馈、最小元任务拆解，并明确禁止直接写代码。 |
+| `documents/gemini-en.md` | `gemini-cn.md` 的英文版。 |
+| `documents/cc的最佳用法.md` | Claude Code 的三条实战心法：非 Plan Mode 不纠正、不要用 `/compact`、三轮未完成就重开。 |
+| `documents/cross_language_refactor_reusable_kb.md` | 大型跨语言重构知识库，覆盖 Harness × CSV Loop 融合流程、阶段验收模板、最小证据集、文档职责分层、等价验证、CI 门禁、人审 + AI 协作、规则清单与附录模板。 |
 
-### 软件
-*   `claude-code`
-*   `gemini-cli`
+### `codex-auto-prompt/prompt/`
 
-## 使用方法
+| 文件 | 实际内容 |
+| --- | --- |
+| `codex-auto-prompt/prompt/prompt.md` | 给 Codex CLI 的驱动 Prompt，要求围绕 `issues.csv` 执行“读取-开发-测试-提交”循环，并包含 `[Code Review]` 任务的专门分支。 |
+| `codex-auto-prompt/prompt/doc.md` | 对上面驱动 Prompt 的说明文档，解释 `issues.csv` 结构、长时间挂机的原理、使用步骤与避坑点。 |
 
-### 🔄 方案一：Claude Code + Gemini CLI 协同工作流
+### `harness-engineering/`
 
-适用于需要**人在回路审查**的复杂项目。
+| 文件 | 实际内容 |
+| --- | --- |
+| `harness-engineering/SKILL.md` | Harness-first 执行 skill，强调先定义成功边界、逐层放权、自主探索预算、主动求助阈值、选项型提问和可追溯交付。 |
+| `harness-engineering/references/harness-engineering-digest.md` | 对 OpenAI《Harnesses are underrated》的中文蒸馏，整理了 harness 设计原则、案例信号、求助阈值与求助模板。 |
+| `harness-engineering/agents/openai.yaml` | 该 skill 的展示名、简介和默认提示配置。 |
 
-**1. 初始化 Claude Code Agent**
-- 使用 `/sub-agent` 命令导入模板：[`documents/claude-cn.md`](documents/claude-cn.md) 或 [`documents/claude-en.md`](documents/claude-en.md)
-- 或将模板内容设置为 `CLAUDE.md` 的基础内容
+### `cybernetic-systems-engineering/`
 
-**2. 初始化 Gemini CLI Agent**
-- 导入模板：[`documents/gemini-cn.md`](documents/gemini-cn.md) 或 [`documents/gemini-en.md`](documents/gemini-en.md)
-- Gemini 被约束为"审查/架构顾问"角色：提出审查意见与行动规划，不直接写代码
+| 文件 | 实际内容 |
+| --- | --- |
+| `cybernetic-systems-engineering/SKILL.md` | 新增 skill。用系统工程 + 工程控制论 + GDA 方法处理 bugfix、feature、refactor、性能、迁移、事故复盘、测试设计、架构审计与 gate 设计，核心内容包括 Control Contract、GDA 四步骨架、传感器工程、决策准则、反模式、交付格式和实战剧本。 |
+| `cybernetic-systems-engineering/references/gda-framework.md` | CSE skill 的展开理论文档，解释五维方法论、GDA 四步法、架构启示、常见误区，并给出一页版执行模板。 |
+| `cybernetic-systems-engineering/references/README.md` | CSE 引用索引，说明 `SKILL.md` 与 `gda-framework.md` 的阅读顺序。 |
+| `cybernetic-systems-engineering/assets/quickstart.md` | CSE 快速入门，给出触发场景、最短使用姿势、最小输出模板和典型问题示例。 |
+| `cybernetic-systems-engineering/agents/openai.yaml` | CSE skill 的展示名与简短说明。 |
 
-**3. 协作流程**
-- 使用统一的 `@+文件名` 语法对齐两个 CLI 中 Agent 的上下文颗粒度
-- 保持任务规划文档的实时更新
-- **人工审查并复制粘贴**两个 Agent 之间的通信，确保符合预期，避免 LLM 自主决策导致的短视效应
+## 怎么选用
 
-**4. 分工原理**
-- **Gemini 2.5 Pro**：1M token 长上下文 → 负责代码审查和提出解决方案
-- **Claude Sonnet 4.5**：200K 上下文 + Agent 训练优化 → 专注于任务执行
+- 想要一个“直接执行代码”的主 Agent Prompt：看 `documents/claude-cn.md` 或 `documents/claude-en.md`。
+- 想要一个“只做审查和规划”的顾问 Prompt：看 `documents/gemini-cn.md` 或 `documents/gemini-en.md`。
+- 想让 Codex CLI 按台账自动循环开发：先看 `codex-auto-prompt/prompt/prompt.md`，再看 `codex-auto-prompt/prompt/doc.md`。
+- 想把复杂任务放入可观测、可协作的执行框架：看 `harness-engineering/SKILL.md`。
+- 想用更强的系统级分析方法处理复杂工程任务：看 `cybernetic-systems-engineering/SKILL.md`。
+- 想沉淀跨语言迁移、门禁和人机协作方法：看 `documents/cross_language_refactor_reusable_kb.md`。
 
----
+## 推荐阅读顺序
 
-### 🤖 方案二：Codex CLI 自动闭环开发
+### 只想快速拿来用
 
-适用于需要**长时间挂机自动开发**的场景。
+1. Claude Code 执行 Prompt：`documents/claude-cn.md`
+2. Gemini 审查 Prompt：`documents/gemini-cn.md`
+3. Codex CSV 自动化：`codex-auto-prompt/prompt/prompt.md`
 
-**核心机制**
-- 使用 **`issues.csv`** 作为任务驱动引擎和外部记忆
-- 每行任务包含：ID、Title、Content、Acceptance Criteria、Review Requirements、State、Labels
-- Agent 严格执行 **"读取 → 开发 → 测试 → 提交"** 循环工作流
+### 想把仓库当作本地 skill 库
 
-**使用步骤**
-1. **Plan**：与 AI 聊透需求，生成 `plan.md`
-2. **Issue**：让 AI 根据 `plan.md` 生成初步的 `issues.csv`，**人工介入修改**，确保验收标准极其具体
-3. **Prompt**：使用驱动 Prompt（[`codex-auto-prompt/prompt/prompt.md`](codex-auto-prompt/prompt/prompt.md)）
-4. **Run**：挂机，让 Agent 自动循环执行
-5. **Check**：查看 Git Commit 记录验证进度
+1. `harness-engineering/SKILL.md`
+2. `cybernetic-systems-engineering/assets/quickstart.md`
+3. `cybernetic-systems-engineering/SKILL.md`
+4. 需要理论展开时再读 `cybernetic-systems-engineering/references/gda-framework.md`
 
-**为什么能跑 11 个小时？**
-1. **外部存储解决记忆问题**：`issues.csv` 记录准确进度，即使上下文刷新，任务状态依然可靠
-2. **Git Commit 防止幻觉**：代码变更和进度变更绑定，可通过 Git 记录追溯
-3. **验收标准强制约束**：每行任务的 Acceptance Criteria 决定开发边界，防止 AI 跑偏
+### 想系统看跨语言重构方法论
 
-详细说明：[`codex-auto-prompt/prompt/doc.md`](codex-auto-prompt/prompt/doc.md)
+1. `documents/cross_language_refactor_reusable_kb.md`
+2. `harness-engineering/SKILL.md`
+3. `cybernetic-systems-engineering/SKILL.md`
 
----
+## 当前仓库最适合的场景
 
-## 💡 Claude Code 使用心法（三条铁律）
-
-只记住这三个最简单的点，让你 CC 智力直线上升：
-
-**1. 除非在 Plan Mode，永远不要纠正 CC**
-- 如果 CC 做错了：`clear` → `git reset` → 修改原始 Prompt 重新执行
-- 否则你会收到典中典的"您说的对"
-
-**2. 永远不要使用 `/compact`**
-- 就当没有这个命令
-- 如果需求执行到 context 满了还没完成 → 拆成两个需求
-- `clear` → `git reset` → 只做第一个需求
-
-**3. 三轮对话还没完成就重来**
-- Context 用到 60% 就差不多了
-- 想清楚你要干什么：`clear` → `git reset` → 重新编辑 Prompt
-
-**一句话总结**：CC 开发团队说过的，错了不要改，直接重新来。没错，绝对是正解。
-
-详细心法：[`documents/cc的最佳用法.md`](documents/cc的最佳用法.md)
-
----
-
-## 🎯 核心思想
-
-**1. 规避 LLM 的局限性**
-
-由于 LLM 底层数学规律的缺陷可能导致错误复合效应和上下文窗口限制，本工作流避免使用单一模型来完成完整的"代码审查-代码修改"循环。引入 Gemini 的长上下文能力，以尽量减少因上下文窗口限制导致的信息丢失，并降低因平方成本诅咒（quadratic cost curse）而产生的高昂 API 使用费用。
-
-**2. 发挥各自优势**
-
-`claude-code` 环境及其完整的工具生态系统，是与 **Claude 4** 模型系列的训练紧密结合的。这使得 **Claude 4** 系列成为目前在"vibe coding"领域最强大的 Agent。结合实际使用 Cursor、Augment 等软件的体验，目前提出的这套方案是实践中门槛最低，并且能够切实完成代码重构等复杂任务的最优解。
-
-## 联系与反馈
-
-如果您有任何建议或疑问，欢迎在本仓库中提出 issue，或联系 `2217173240@qq.com`（请勿发送 QQ 好友请求）。
-
-
+- Claude Code 与 Gemini CLI 分工协作
+- Codex CLI 基于 `issues.csv` 的长时自动开发
+- 需要 harness-first 执行框架的复杂排障或 CI 修复
+- 需要把 bugfix / refactor / gate 设计放进系统级闭环控制的任务
+- 需要为跨语言重构项目建立证据链、验收模板和协作协议
