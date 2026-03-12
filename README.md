@@ -25,9 +25,11 @@
 │   ├── cc的最佳用法.md
 │   └── cross_language_refactor_reusable_kb.md
 ├── codex-auto-prompt/
-│   └── prompt/
-│       ├── doc.md
-│       └── prompt.md
+│   ├── prompt/
+│   │   ├── doc.md
+│   │   └── prompt.md
+│   └── seed-Agentsmd/
+│       └── AGENTS.md
 ├── harness-engineering/
 │   ├── SKILL.md
 │   ├── agents/openai.yaml
@@ -68,6 +70,12 @@
 | `codex-auto-prompt/prompt/prompt.md` | 给 Codex CLI 的驱动 Prompt，要求围绕 `issues.csv` 执行“读取-开发-测试-提交”循环，并包含 `[Code Review]` 任务的专门分支。 |
 | `codex-auto-prompt/prompt/doc.md` | 对上面驱动 Prompt 的说明文档，解释 `issues.csv` 结构、长时间挂机的原理、使用步骤与避坑点。 |
 
+### `codex-auto-prompt/seed-Agentsmd/`
+
+| 文件 | 实际内容 |
+| --- | --- |
+| `codex-auto-prompt/seed-Agentsmd/AGENTS.md` | 从既有实战经验中提炼出的通用 `AGENTS.md` 模板。保留执行规范、任务工作流、测试与质量红线、防踩坑约束，但去掉了具体项目路径、文件名、项目名、账号、数据库 IP 等项目绑定信息，方便他人按自己的代码库继续扩展。 |
+
 ### `harness-engineering/`
 
 | 文件 | 实际内容 |
@@ -91,6 +99,7 @@
 - 想要一个“直接执行代码”的主 Agent Prompt：看 `documents/claude-cn.md` 或 `documents/claude-en.md`。
 - 想要一个“只做审查和规划”的顾问 Prompt：看 `documents/gemini-cn.md` 或 `documents/gemini-en.md`。
 - 想让 Codex CLI 按台账自动循环开发：先看 `codex-auto-prompt/prompt/prompt.md`，再看 `codex-auto-prompt/prompt/doc.md`。
+- 想快速拿一个可复用的 `AGENTS.md` 基线模板：看 `codex-auto-prompt/seed-Agentsmd/AGENTS.md`。
 - 想把复杂任务放入可观测、可协作的执行框架：看 `harness-engineering/SKILL.md`。
 - 想用更强的系统级分析方法处理复杂工程任务：看 `cybernetic-systems-engineering/SKILL.md`。
 - 想沉淀跨语言迁移、门禁和人机协作方法：看 `documents/cross_language_refactor_reusable_kb.md`。
